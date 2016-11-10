@@ -21,17 +21,17 @@
     <link rel="apple-touch-icon" sizes="114x114" href="http://phlorence.dartweb.ru/img/favicons/apple-touch-icon-114x114.png">
  -->
     <!-- Bootstrap -->
-    <link href="Content/css/bootstrap.css" rel="stylesheet">
-	<link href="Content/css/alertify.min.css" rel="stylesheet">
-	<link href="Content/css/default.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('css/Content/css/alertify.min.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('css/Content/css/default.min.css') }}" rel="stylesheet">
 	
     <!-- Font awesome -->
-    <link href="Content/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- Owl carousel -->
-    <link href="Content/css/owl.carousel.css" rel="stylesheet">
-    <link href="Content/css/owl.theme.css" rel="stylesheet">
-    <link href="Content/css/owl.transitions.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/owl.theme.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/owl.transitions.css') }}" rel="stylesheet">
 
     <!-- Pace -->
     <!--[if gt IE 8]>
@@ -40,9 +40,9 @@
     <![endif]-->
 
     <!-- Custom css -->
-    <link href="Content/css/style.css" rel="stylesheet">
-	<link href="Content/css/general.css" rel="stylesheet">
-	<link href="Content/css/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/Content/css/style.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('css/Content/css/general.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('css/Content/css/bootstrapValidator.min.css') }}" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic' rel='stylesheet' type='text/css'>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -97,24 +97,24 @@
                     <li>
                         <a href="#about">Tentang</a>
                     </li>
-                    <li>
+                    <!--li>
                         <a href="#team">Tim</a>
-                    </li>
+                    </li-->
                     <li>
-                        <a href="#works">Pekerjaan</a>
+                        <a href="#works">Project</a>
                     </li>
-								<li>
+								<!--li>
                         <a href="#whatwecando">Custom</a>
-                    </li>
+                    </li-->
                     <!--li>
                         <a href="#testimonials">Testimoni</a>
                     </li-->
                     <li>
                         <a href="#pricing">Biaya</a>
                     </li>
-                    <!--li>
+                    <li>
                         <a href="#blog">Blog</a>
-                    </li-->
+                    </li>
                     <li>
                         <a href="#contacts">Kontak</a>
                     </li>
@@ -132,18 +132,18 @@
     <div class="ws-content">
         <div class="container">
            <h1>
-                Jasa
+                Tomatoes
             </h1>	
 					<h1>
-                Pembuatan Website
+                Software Development
             </h1>
             <div class="ws-content-advantages">
                 <ul>
                     <li>
-                        <h5><i class="fa fa-usd"></i> Harga Termurah<h4>
+                        <h5><i class="fa fa-usd"></i> Harga Kompetitef<h4>
                     </li>
                     <li>
-                       <h5> <i class="fa fa-smile-o"></i> Ur Satisfaction is Our Target<h4>
+                       <h5> <i class="fa fa-smile-o"></i> Ramah Kepada klien<h4>
                     </li>
                     <li>
                         <h5><i class="fa fa-rocket"></i> Kerja cepat dan tepat<h4>
@@ -164,66 +164,51 @@
 
     <div class="container">
         <div class="section-header">
-            <h2>Professional Web Design</h2>
-				<p class="section-header-description"><strong>Tomato Project</strong>,
-				Kami adalah Professional Web Design and Application Development. kami 
-							membuat websites dengan design modern dan fitur terkini untuk bisnis 
-						kecil dan organisasi dengan developing secara professional, Dioptimalkan
-						untuk tampilan desktop dan mobile, mudah dalam 
-		   maintenance dan fleksibilitas untuk kebutuhan bisnis Anda</p>
+            <h2>Professional Software Development</h2>
+				<p class="section-header-description"><strong>Tomatoes Software Development</strong>,
+				Kami adalah Tim pengembang proyek dalam bidang IT yang berfokus pada menciptakan ataupun mengembangkan 
+                sebuah perangkat lunak sebagai solusi bagi bisnis anda.
+                Perangkat berbasis web, desktop dan smartphone dengan design modern, fitur dan teknologi terkini 
+                serta mudah dalam maintenance 
+                kami kerjakan secara professional untuk Anda. Kami mengembangkan perangkat lunak 
+                untuk kebutuhan bisnis, sekolah , unversitas, organisasi dan pemerintahan. </p>
 		   </div>
 
         <div class="row about-us-blocks">
-            <div class="col-sm-3 about-us-block">
+            <div class="col-sm-4 about-us-block">
                 <div class="about-us-block-icon">
                     <i class="fa fa-code-fork"></i>
                 </div>
                 <div class="about-us-block-header">
-                <h4>Complete Website Fiture</h4>
-                </div>
-                <div class="about-us-block-content">
-                    <p>
-                        Website dilengkapi dengan halaman admin, dan fitur tambahan lain 
-										seperti visitor analytic, 
-										social media integration, 
-										chatting, responsive website, dll.
-                    </p>
-                </div>
-            </div>
-            <div class="col-sm-3 about-us-block">
-                <div class="about-us-block-icon">
-                    <i class="fa fa-code-fork"></i>
-                </div>
-                <div class="about-us-block-header">
-                    <h4>Web Design Profesional</h4>
-                </div>
-                <div class="about-us-block-content">
-                    <p>
-                        Web Designer kami akan membuatkan tampilan website yang profesional dan sesuai keinginan Anda.
-                    </p>
-                </div>
-            </div>
-            <div class="col-sm-3 about-us-block">
-                <div class="about-us-block-icon">
-                    <i class="fa fa-code-fork"></i>
-                </div>
-                <div class="about-us-block-header">
-                    <h4>Professional Team</h4>
+                <h4>Kapabilitas</h4>
                 </div>
                 <div class="about-us-block-content">
                     <p>
                         
-										Tim kami memiliki proses kerja yang jelas dan sistematis, 
-										memastikan project website Anda selesai tepat waktu.
                     </p>
                 </div>
             </div>
-            <div class="col-sm-3 about-us-block">
+            <div class="col-sm-4 about-us-block">
                 <div class="about-us-block-icon">
                     <i class="fa fa-code-fork"></i>
                 </div>
                 <div class="about-us-block-header">
-                    <h4>Latest Technology</h4>
+                    <h4>Profesional Tim</h4>
+                </div>
+                <div class="about-us-block-content">
+                    <p>
+                        Tim kami memiliki proses kerja yang jelas dan sistematis,
+                        memastikan project website Anda selesai tepat waktu.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-sm-4 about-us-block">
+                <div class="about-us-block-icon">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+                <div class="about-us-block-header">
+                    <h4>Teknologi Terkini</h4>
                 </div>
                 <div class="about-us-block-content">
                     <p>
@@ -238,7 +223,7 @@
     </div>
 </div>
 <!-- /.about-us -->
-<div class="section team">
+<!--<div class="section team">
     <a name="team"></a>
 
     <div class="container">
@@ -323,17 +308,17 @@
             </div>
         </div>
     </div>
-</div>
+</div-->
 <!-- /.team -->
 
-<div class="section works">
+<div class="section team">
     <a name="works"></a>
 
     <div class="section-header">
-        <h2>Our Project</h2>
+        <h2>Project Kami</h2>
 
         <p class="section-header-description">
-            Kami mendevelop website, mobile aplication dan desktop software.
+            Kami mengerjakan project aplikasi seperti website, mobile aplication dan desktop .
         </p>
     </div>
 	<div class="own-carousel">
@@ -343,7 +328,7 @@
                     <div class="col-sm-4">
                         <div class="work-body">
                             <div class="work-header">
-                                <h4>Basic Web Design</h4>
+                                <h4>CV. Garnadi</h4>
                             </div>
                             <div class="work-description">
                                 <p>
@@ -364,7 +349,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <img src="Content/img/web1.png" class="img-responsive"/>
+                        <img src="{{ URL::asset('css/Content/img/web1.png')}}" class="img-responsive"/>
                     </div>
                 </div>
             </div>
@@ -375,7 +360,7 @@
                     <div class="col-sm-4">
                         <div class="work-body">
                             <div class="work-header">
-                                <h4>Medium Web Design</h4>
+                                <h4>ERP</h4>
                             </div>
 												<div class="work-description">
                                 <p>
@@ -388,7 +373,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <img src="Content/img/web2.png" class="img-responsive"/>
+                        <img src="{{ URL::asset('css/Content/img/web2.png')}}" class="img-responsive"/>
                     </div>
                 </div>
             </div>
@@ -399,7 +384,7 @@
                     <div class="col-sm-4">
                         <div class="work-body">
                             <div class="work-header">
-                                <h4>Custom Web Design</h4>
+                                <h4>Sistem Informasi Akademik</h4>
                             </div>
 							               <div class="work-description">
                                 <p>
@@ -420,7 +405,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8094px">
-                        <img src="Content/img/mdk3.png" class="img-responsive"/>
+                        <img src="{{ URL::asset('css/Content/img/mdk3.png') }}" class="img-responsive"/>
                     </div>
                 </div>
             </div>
@@ -430,7 +415,7 @@
 	
 	
 	
-	<div class="section whatwecando">
+	<!--div class="section whatwecando">
     <a name="whatwecando"></a>
 
     <div class="section-header">
@@ -540,7 +525,7 @@
             </div>
         </div>
     </div>
-	</div>
+	</div-->
     <!--div style="opacity: 1; display: block;" class="own-carousel owl-carousel owl-theme">
         <div class="owl-wrapper-outer"><div style="width: 8094px; left: 0px; display: block; transform: translate3d(-1349px, 0px, 0px); perspective-origin: 2023.5px 50%;" class="owl-wrapper"><div style="width: 1349px;" class="owl-item"><div class="work">
             <div class="container">
@@ -741,7 +726,7 @@
 </div>
 <!-- /.testimonials -->
 
-<div class="section pricing">
+<!--<div class="section pricing">
     <a name="pricing"></a>
 
     <div class="pricing-overlay"></div>
@@ -759,7 +744,7 @@
         </p></div>
 
         <div class="row pricing-plans">
-            <!--div class="col-sm-3">
+            <div class="col-sm-3">
                 <div class="panel panel-default pricing-plan">
                     <div class="panel-heading">
                         <h3 class="panel-title">Ekonomis &mdash; Rp. 1600.000</h3>
@@ -785,7 +770,7 @@
                         <a href="#" class="btn btn-primary">Hubungi Kami</a>
                     </div>
                 </div>
-            </div-->
+            </div
 			
             <div class="col-sm-4">
                 <div class="panel panel-info pricing-plan">
@@ -865,25 +850,25 @@
             </div>
         </div>
     </div>
-</div>
+</div-->
 <!-- /.testimonials -->
 
-<!--div class="section blog">
+<div class="section blog">
     <a name="blog"></a>
 
     <div class="container">
         <div class="section-header">
-            <h2>Read Our Blog</h2>
+            <h2>Silahkan Kunjungi Blog Kami</h2>
 
             <p class="section-header-description">
-                We write interesting things about web programming and design.
+                Kami menulis hal-hal yang menarik tentang dunia IT terkini seperti programming, hacking dan networking.
             </p>
 
         </div>
         <div class="blog-post">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="img/blog.jpg" class="img-responsive"/>
+                    <img src="{{ URL::asset('img/blog.jpg') }}" class="img-responsive"/>
                 </div>
                 <div class="col-sm-6">
                     <h3>Working with Scrum. Our experience.</h3>
@@ -911,7 +896,7 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 <!-- /.blog -->
 
 <div class="section contacts">
@@ -1051,88 +1036,21 @@
 </div>
 <!-- /.wrapper -->
 
-<!-- Javascript libs --><script src="Scripts/js/jquery.min.js"></script>
+<!-- Javascript libs --><script src="{{ URL::asset('js/Scripts/js/jquery.min.js') }}"></script>
 
-<script type="text/javascript" async="" src="Scripts/js/watch.js"></script>
-<script src="Scripts/js/bootstrap.min.js"></script>
-<script src="Scripts/js/bootstrapValidator.min.js"></script>
-<script src="Scripts/js/alertify.min.js"></script>
+<script type="text/javascript" async="" src="{{ URL::asset('js/Scripts/js/watch.js') }}"></script>
+<script src="{{ URL::asset('js/Scripts/js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
+{!! JsValidator::formRequest('App\Http\Requests\RequestKontak', '#kontak-frm') !!}
 
-<script src="Scripts/js/owl.carousel.min.js"></script>
+<script src="{{ URL::asset('js/Scripts/js/owl.carousel.min.js') }}"></script>
 
 <!-- Phlorence javascript -->
-<script src="Scripts/js/phlorence.js"></script>
+<script src="{{ URL::asset('js/Scripts/js/phlorence.js') }}"></script>
 
 <script type='text/javascript'>
-	$(document).ready(function(){
-		$('#kontak-frm').bootstrapValidator({
-				live: 'enabled',
-				message: 'This value is not Valid',
-				feedbackIcons: {
-					valid: 'glyphicon glyphicon-ok',
-					invalid: 'glyphicon glyphicon-remove',
-					validating: 'glyphicon glyphicon-refresh'
-				},
-				excluded:'disabled',
-				fields: {
-					
-					email: {
-						validators: {
-							notEmpty: {
-								message: 'Silahkan isi e-mail'
-							},
-							emailAddress: {
-								message: 'Silahkan isi e-mail dengan benar'
-							}
-							
-						}
-					},
-					name: {
-						validators: {
-							notEmpty: {
-								message: 'Silahkan isi nama perusahaan'
-							}
-						}
-
-					},
-					phone: {
-						validators: {
-							notEmpty: {
-								message: 'Silahkan isi nomor kontak'
-							},
-							 numeric: {
-								message: 'Nomor telepon salah',
-								// The default separators
-								thousandsSeparator: '',
-								decimalSeparator: '.'
-							}	
-						}
-					},
-					
-					message: {
-						validators: {
-							notEmpty: {
-								message: 'Silahkan isi pesan'
-							}
-						}
-
-					},
-					remarks:{
-						validators:{
-							notEmpty: {
-								message: 'Silahkan isi apa yang bisa kami bantu untuk anda'
-							}
-						}
-					},
-					captchatext:{
-						validators:{
-							notEmpty: {
-								message: 'Silahkan isi dengan teks diatas'
-							}
-						}
-					}
-				}
-			}).on('success.form.bv', function (e) {
+	/*$(document).ready(function(){
+		
         // Prevent form submission
 				e.preventDefault();
 				// Get the form instance
@@ -1172,7 +1090,6 @@
 						$('#captcha').attr('src','captcha.php');
 					}
 				});
-		});
 	});
 </script>
 </body></html>
