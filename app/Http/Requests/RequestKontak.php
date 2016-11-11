@@ -35,11 +35,11 @@ class RequestKontak extends FormRequest
     public function messages()
     {
         return [
-            'nis.required' => 'silahkan isi nis',
-            'nis.numeric' => 'nis harus angka',
-            'nis.unique' => 'nis sudah ada',
-            'nama.required' => 'silahkan isi nama',
-            'alamat.required' => 'silahkan isi alamat'
+            'email.required' => 'silahkan isi email',
+            'email.unique' => 'email sudah ada',
+            'name.required' => 'silahkan isi nama',
+            'phone.required' => 'silahkan isi no handphone atau telepon',
+            'remarks.required' => 'silahkan isi keterangan'
         ];
     }
 }
