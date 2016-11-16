@@ -8,6 +8,6 @@ class ModelKontak extends Model
 {
     //
     $table='table_contact';
-   // protected $fillable = array('email', 'name', 'phone','remarks');
+    protected $fillable = array('email', 'name', 'phonenumber','remarks','status');
     
 }

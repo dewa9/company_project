@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0038)http://phlorence.dartweb.ru/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +23,6 @@
  -->
     <!-- Bootstrap -->
     <link href="{{ URL::asset('css/Content/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ URL::asset('css/Content/css/alertify.min.css') }}" rel="stylesheet">
 	<link href="{{ URL::asset('css/Content/css/default.min.css') }}" rel="stylesheet">
 	
     <!-- Font awesome -->
@@ -50,7 +50,18 @@
     <script src="js/lib/shiv/html5shiv.js"></script>
     <![endif]-->
 
-<script type="text/javascript" async="" src="Content/css/request"></script></head>
+
+ <style>
+        [data-notify="progressbar"] {
+          margin-bottom: 0px;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 100%;
+          height: 5px;
+        }
+    </style>
+</head>
 <body>
 <div class="wrapper">
 <div class="header">
@@ -911,7 +922,8 @@
             </p>
         </div>
         <div class="form-contacts-wrapper col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
-            <form class="form-contacts" method="POST" action="Controller/savecontact.php" id="kontak-frm" autocomplete="off">
+            <form class="form-contacts" method="POST" action="{{url('/contact/postcontact')}}" id="kontak-frm" autocomplete="off">
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <input class="form-control input-lg" id="id-email" name="email" placeholder="Masukkan email anda" type="email">
                 </div>
@@ -919,13 +931,13 @@
                     <input class="form-control input-lg" id="id-name" name="name" placeholder="Masukkan nama lengkap anda" type="text">
                 </div>
 				 <div class="form-group">
-                    <input class="form-control input-lg" id="id-phone" name="phone" placeholder="Masukkan nomor telepon anda yang bisa kami hubungi" type="text" maxlength="13">
+                    <input class="form-control input-lg" id="id-phone" name="phonenumber" placeholder="Masukkan nomor telepon anda yang bisa kami hubungi" type="text" maxlength="13">
                 </div>
                 <div class="form-group">
                     <textarea name="remarks" placeholder="Apa yang dapat kami bantu untuk bisnis atau project anda" class="form-control input-lg"></textarea>
                 </div>
 				<div class="form-group">
-					<img id="captcha" src="captcha.php" class="col-sm-offset-4" alt="gambar"> 
+					<img id="captcha" src="#" class="col-sm-offset-4" alt="gambar"> 
 				</div>
 				<div class="form-group" id="captchagroup">
 					<input class="form-control input-lg" id="id-captcha" name="captchatext" placeholder="Masukkan teks di atas" maxlength="6" type="text">
@@ -1036,60 +1048,20 @@
 </div>
 <!-- /.wrapper -->
 
-<!-- Javascript libs --><script src="{{ URL::asset('js/Scripts/js/jquery.min.js') }}"></script>
+<!-- Javascript libs -->
+<script src="{{ URL::asset('js/Scripts/js/jquery.min.js') }}"></script>
 
 <script type="text/javascript" async="" src="{{ URL::asset('js/Scripts/js/watch.js') }}"></script>
 <script src="{{ URL::asset('js/Scripts/js/bootstrap.min.js') }}"></script>
-<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
-{!! JsValidator::formRequest('App\Http\Requests\RequestKontak', '#kontak-frm') !!}
+<!--Notify-->
+<script src="{{ URL::asset('vendor/notify/bootstrap-notify.min.js')}}"></script>
+
 
 <script src="{{ URL::asset('js/Scripts/js/owl.carousel.min.js') }}"></script>
 
 <!-- Phlorence javascript -->
 <script src="{{ URL::asset('js/Scripts/js/phlorence.js') }}"></script>
 
-<script type='text/javascript'>
-	/*$(document).ready(function(){
-		
-        // Prevent form submission
-				e.preventDefault();
-				// Get the form instance
-				var $form = $(e.target);
-				// Get the BootstrapValidator instance
-				var bv = $form.data('bootstrapValidator');
-				// Use Ajax to submit form data
-				
-				//formData.append('file','file);
-				var data = $form.serialize();
-				$('#kontak-frm input').attr("disabled", "disabled");
-				$.ajax({
-					type: 'POST',
-					url: $form.attr('action'),
-					data: data,
-					dataType: 'json',
-					success: function (data) {
-							data=parseInt(data);
-						if(data==3){
-							$('#captchagroup').addClass('has-error').find('input').val('');
-							alertify.error('Captcha Salah');
-						}else{
-							console.log('Gagal mengirim ke email');
-							$('#captchagroup').removeClass('has-error').find('input').val('');
-							//$('#kontak-frm').bootstrapValidator('resetForm',true);
-							alertify.success('Data berhasil dikirim');
-						}
-						return false;
-					},
-					error: function (xhr,textStatus,errormessage) {
-						alertify.alert("Kesalahan! ","Error !!"+xhr.status+" "+textStatus+" "+"Tidak dapat mengirim data!");
-					},
-					complete: function () {
-						$('#kontak-frm').bootstrapValidator('resetForm',true);
-						$('#btnsubmit').removeAttr('disabled');
-						$('#kontak-frm input').removeAttr("disabled");
-						$('#captcha').attr('src','captcha.php');
-					}
-				});
-	});
-</script>
+<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
+{!! JsValidator::formRequest('App\Http\Requests\RequestKontak', '#kontak-frm') !!}
 </body></html>

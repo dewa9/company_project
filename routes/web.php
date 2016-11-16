@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('home.index');
 });
+Route::post('/contact/postcontact','ControllerContact@store');

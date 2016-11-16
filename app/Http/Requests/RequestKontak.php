@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RequestKontak extends FormRequest
@@ -27,7 +27,7 @@ class RequestKontak extends FormRequest
             //
             'email'=>'required|unique:contact',
             'name' =>'required',
-            'phone' =>'required',
+            'phonenumber' =>'required',
             'remarks' => 'required'
         ];
     }
@@ -38,7 +38,7 @@ class RequestKontak extends FormRequest
             'email.required' => 'silahkan isi email',
             'email.unique' => 'email sudah ada',
             'name.required' => 'silahkan isi nama',
-            'phone.required' => 'silahkan isi no handphone atau telepon',
+            'phonenumber.required' => 'silahkan isi no handphone atau telepon',
             'remarks.required' => 'silahkan isi keterangan'
         ];
     }
