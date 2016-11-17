@@ -940,7 +940,7 @@
 					<img id="captcha" src="#" class="col-sm-offset-4" alt="gambar"> 
 				</div>
 				<div class="form-group" id="captchagroup">
-					<input class="form-control input-lg" id="id-captcha" name="captchatext" placeholder="Masukkan teks di atas" maxlength="6" type="text">
+					<input class="form-control input-lg" id="id-captcha" name="#" placeholder="Masukkan teks di atas" maxlength="6" type="text">
 				</div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim</button>
@@ -1056,12 +1056,55 @@
 <!--Notify-->
 <script src="{{ URL::asset('vendor/notify/bootstrap-notify.min.js')}}"></script>
 
-
+<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
 <script src="{{ URL::asset('js/Scripts/js/owl.carousel.min.js') }}"></script>
 
 <!-- Phlorence javascript -->
 <script src="{{ URL::asset('js/Scripts/js/phlorence.js') }}"></script>
-
-<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
-{!! JsValidator::formRequest('App\Http\Requests\RequestKontak', '#kontak-frm') !!}
+<script type="text/javascript">
+  var notify=null
+      
+  $(document).ready(function(){
+    $('#kontak-frm').submit(function(e){
+            alert('hello');
+            e.preventDefault();
+          $('#send').button('loading');
+          $('#form-contacts input').attr("disabled", "disabled");
+          $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            beforeSend:function(){
+              notify=$.notify('<strong>Sedang Menyimpan</strong> Jangan Tutup Halaman ini...', {
+                        allow_dismiss: false,
+                        showProgressbar: true
+                        });
+            },
+            success:function(data){
+              if(parseInt(data.return)==1)
+              {
+                  setTimeout(function() {
+                    notify.update({'type': 'success', 'message': '<strong>Berhasil</strong> data berhasil disimpan!', 'progress': 25});
+                  }, 2000);
+              }
+            },
+            error:function(xhr,status,errormessage)
+            {
+                console.log(errormessage);
+              setTimeout(function() {
+                    notify.update({'type': 'danger', 'message': '<strong>Gagal</strong> menyimpan data! ', 'progress': 25});
+                  });
+            },
+            complete:function()
+            {
+              $('#kontak-frm').removeAttr('disabled').trigger('reset');
+              $('.form-group').removeClass('has-success');
+              $('#send').button('reset');
+            }
+          });
+      });  
+      
+  });
+</script>
 </body></html>
