@@ -943,7 +943,7 @@
 					<input class="form-control input-lg" id="id-captcha" name="#" placeholder="Masukkan teks di atas" maxlength="6" type="text">
 				</div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim</button>
+                    <button id="send" type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim</button>
                 </div>
             </form>
         </div>
@@ -1066,8 +1066,7 @@
       
   $(document).ready(function(){
     $('#kontak-frm').submit(function(e){
-            alert('hello');
-            e.preventDefault();
+          e.preventDefault();
           $('#send').button('loading');
           $('#form-contacts input').attr("disabled", "disabled");
           $.ajax({
@@ -1082,6 +1081,7 @@
                         });
             },
             success:function(data){
+                console.log(data);
               if(parseInt(data.return)==1)
               {
                   setTimeout(function() {
@@ -1091,10 +1091,10 @@
             },
             error:function(xhr,status,errormessage)
             {
-                console.log(errormessage);
-              setTimeout(function() {
+               // console.log(errormessage +" xhr :"+ xhr+" status :"+status);
+              /*setTimeout(function() {
                     notify.update({'type': 'danger', 'message': '<strong>Gagal</strong> menyimpan data! ', 'progress': 25});
-                  });
+                  });*/
             },
             complete:function()
             {

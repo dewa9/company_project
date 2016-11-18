@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Contracts\Validation\Validator;
 class RequestKontak extends FormRequest
 {
     /**
@@ -41,5 +41,10 @@ class RequestKontak extends FormRequest
             'phonenumber.required' => 'silahkan isi no handphone atau telepon',
             'remarks.required' => 'silahkan isi keterangan'
         ];
+    }
+
+    protected function formatErrors(Validator $validator)
+    {
+        return $validator->errors()->all();
     }
 }
