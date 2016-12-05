@@ -937,10 +937,7 @@
                     <textarea name="remarks" placeholder="Apa yang dapat kami bantu untuk bisnis atau project anda" class="form-control input-lg"></textarea>
                 </div>
 				<div class="form-group">
-					<img id="captcha" src="#" class="col-sm-offset-4" alt="gambar"> 
-				</div>
-				<div class="form-group" id="captchagroup">
-					<input class="form-control input-lg" id="id-captcha" name="#" placeholder="Masukkan teks di atas" maxlength="6" type="text">
+                    <div class="g-recaptcha" data-sitekey="6Le84w0UAAAAAPqeH4wxIfsfQnu3ElzW4rB4PhST"></div>
 				</div>
                 <div class="text-center">
                     <button id="send" type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim</button>
@@ -1055,55 +1052,129 @@
 <script src="{{ URL::asset('js/Scripts/js/bootstrap.min.js') }}"></script>
 <!--Notify-->
 <script src="{{ URL::asset('vendor/notify/bootstrap-notify.min.js')}}"></script>
+<script src="{{ URL::asset('js/Scripts/js/bootstrapValidator.min.js') }}"></script>
 
-<script src="{{ URL::asset('vendor/jsvalidation/js/jsvalidation.min.js')}}" type='text/javascript'></script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="{{ URL::asset('js/Scripts/js/owl.carousel.min.js') }}"></script>
 
 <!-- Phlorence javascript -->
 <script src="{{ URL::asset('js/Scripts/js/phlorence.js') }}"></script>
 <script type="text/javascript">
-  var notify=null
+  var notify=null;
       
   $(document).ready(function(){
-    $('#kontak-frm').submit(function(e){
-          e.preventDefault();
-          $('#send').button('loading');
-          $('#form-contacts input').attr("disabled", "disabled");
-          $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: 'json',
-            beforeSend:function(){
-              notify=$.notify('<strong>Sedang Menyimpan</strong> Jangan Tutup Halaman ini...', {
-                        allow_dismiss: false,
-                        showProgressbar: true
-                        });
-            },
-            success:function(data){
-                console.log(data);
-              if(parseInt(data.return)==1)
-              {
-                  setTimeout(function() {
-                    notify.update({'type': 'success', 'message': '<strong>Berhasil</strong> data berhasil disimpan!', 'progress': 25});
-                  }, 2000);
-              }
-            },
-            error:function(xhr,status,errormessage)
-            {
-               // console.log(errormessage +" xhr :"+ xhr+" status :"+status);
-              /*setTimeout(function() {
-                    notify.update({'type': 'danger', 'message': '<strong>Gagal</strong> menyimpan data! ', 'progress': 25});
-                  });*/
-            },
-            complete:function()
-            {
-              $('#kontak-frm').removeAttr('disabled').trigger('reset');
-              $('.form-group').removeClass('has-success');
-              $('#send').button('reset');
-            }
-          });
-      });  
+    $('#kontak-frm').bootstrapValidator({
+                live: 'enabled',
+                message: 'This value is not Valid',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                excluded:'disabled',
+                fields: {
+                    
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Silahkan isi e-mail'
+                            },
+                            emailAddress: {
+                                message: 'Silahkan isi e-mail dengan benar'
+                            }
+                            
+                        }
+                    },
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Silahkan isi nama perusahaan'
+                            }
+                        }
+
+                    },
+                    phonenumber: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Silahkan isi nomor kontak'
+                            },
+                             numeric: {
+                                message: 'Nomor telepon salah',
+                                // The default separators
+                                thousandsSeparator: '',
+                                decimalSeparator: '.'
+                            }   
+                        }
+                    },
+                    
+                    message: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Silahkan isi pesan'
+                            }
+                        }
+
+                    },
+                    remarks:{
+                        validators:{
+                            notEmpty: {
+                                message: 'Silahkan isi apa yang bisa kami bantu untuk anda'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+        // Prevent form submission
+                e.preventDefault();
+                // Get the form instance
+                var $form = $(e.target);
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+                // Use Ajax to submit form data
+                
+                //formData.append('file','file);
+                var data_send = $form.serialize();
+                $('#kontak-frm input').attr("disabled", "disabled");
+                $.ajax({
+                    type: 'POST',
+                    url: $form.attr('action'),
+                    data: data_send,
+                    dataType: 'json',
+                    beforeSend:function(){
+                        setTimeout(function() {
+                                notify.update({'type': 'success', 
+                                    'message': '<strong>Sending</strong> ...', 
+                                    'progress': 25});
+                            }, 2000);
+                    },
+                    success: function (data) {
+                            data=parseInt(data);
+                            setTimeout(function() {
+                                notify.update({'type': 'success', 
+                                    'message': '<strong>Berhasil</strong> data berhasil disimpan!', 
+                                    'progress': 25});
+                            }, 2000);
+                            
+                        return false;
+                    },
+                    error: function (xhr,textStatus,errormessage) {
+                        setTimeout(function() {
+                    notify.update({'type': 'danger', 
+                        'message': '<strong>Gagal</strong> menyimpan data! ', 
+                        'progress': 25});
+                  });
+                        //alertify.alert("Kesalahan! ","Error !!"+xhr.status+" "+textStatus+" "+"Tidak dapat mengirim data!");
+                    },
+                    complete: function () {
+                        $('#kontak-frm').bootstrapValidator('resetForm',true);
+                        $('#btnsubmit').removeAttr('disabled');
+                        $('#kontak-frm input').removeAttr("disabled");
+                        var widgetId = grecaptcha.render(container);
+                        grecaptcha.reset(widgetId);
+                    }
+                });
+        });
       
   });
 </script>

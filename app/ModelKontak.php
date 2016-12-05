@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelKontak extends Model
 {
     //
-    $table='table_contact';
+    protected $table='table_contact';
     protected $fillable = array('email', 'name', 'phonenumber','remarks','status');
     
 }
