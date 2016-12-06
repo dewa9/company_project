@@ -25,7 +25,7 @@ class RequestKontak extends FormRequest
     {
         return [
             //
-            'email'=>'required|unique:contact',
+            'email'=>'required|unique:table_contact',
             'name' =>'required',
             'phonenumber' =>'required',
             'remarks' => 'required'

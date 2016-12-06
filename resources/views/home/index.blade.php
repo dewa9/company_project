@@ -939,10 +939,11 @@
 				<div class="form-group">
                     <div class="g-recaptcha" data-sitekey="6Le84w0UAAAAAPqeH4wxIfsfQnu3ElzW4rB4PhST"></div>
 				</div>
-                <div class="text-center">
+                 <div class="text-center">
                     <button id="send" type="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim</button>
                 </div>
             </form>
+           
         </div>
     </div>
 </div>
@@ -1126,6 +1127,7 @@
                 }
             }).on('success.form.bv', function (e) {
         // Prevent form submission
+                var btn =$('#send');
                 e.preventDefault();
                 // Get the form instance
                 var $form = $(e.target);
@@ -1142,36 +1144,54 @@
                     data: data_send,
                     dataType: 'json',
                     beforeSend:function(){
-                        setTimeout(function() {
-                                notify.update({'type': 'success', 
-                                    'message': '<strong>Sending</strong> ...', 
-                                    'progress': 25});
-                            }, 2000);
+                        btn.button('loading');
+                        notify=$.notify('<strong>Sending</strong> ...',
+                            {
+                                allow_dismiss: false,
+                                showProgressbar: true
+                        });
                     },
                     success: function (data) {
-                            data=parseInt(data);
-                            setTimeout(function() {
-                                notify.update({'type': 'success', 
-                                    'message': '<strong>Berhasil</strong> data berhasil disimpan!', 
-                                    'progress': 25});
-                            }, 2000);
+                            data=parseInt(data.return);
+
+                            if(data==1)
+                            {
+                                    setTimeout(function() {
+                                    notify.update({'type': 'success', 
+                                        'message': '<strong>Terima Kasih</strong> telah menghubungi kami!', 
+                                        'progress': 25});
+                                }, 2000);
+                                    $('#kontak-frm').bootstrapValidator('resetForm',true);
+                                }else{
+                                     setTimeout(function() {
+                                    notify.update({'type': 'warning', 
+                                        'message': '<strong>Gagal</strong> periksa kembali kiriman anda!', 
+                                        'progress': 25});
+                                }, 2000);
+                            }
+                            
                             
                         return false;
                     },
                     error: function (xhr,textStatus,errormessage) {
+                        var errorHtml='';
+                        $.each(xhr.responseJSON,function(key,value){
+                            errorHtml+='<li>'+ value+'</li>';
+                        });
                         setTimeout(function() {
                     notify.update({'type': 'danger', 
-                        'message': '<strong>Gagal</strong> menyimpan data! ', 
+                        'message': '<strong>Gagal</strong> mengirim ! '+errorHtml, 
                         'progress': 25});
                   });
                         //alertify.alert("Kesalahan! ","Error !!"+xhr.status+" "+textStatus+" "+"Tidak dapat mengirim data!");
                     },
                     complete: function () {
-                        $('#kontak-frm').bootstrapValidator('resetForm',true);
+                        
                         $('#btnsubmit').removeAttr('disabled');
                         $('#kontak-frm input').removeAttr("disabled");
-                        var widgetId = grecaptcha.render(container);
-                        grecaptcha.reset(widgetId);
+                       // var widgetId = grecaptcha.render(container);
+                        btn.button("reset");
+                        grecaptcha.reset();
                     }
                 });
         });

@@ -21,9 +21,9 @@ class ControllerContact extends Controller
                 'remarks'=> $request->input('remarks'),
                 'status'=>'D'
             ]);
-        if($action){
-            $stat=1;
-        }
+            if($action){
+                $stat=1;
+            }
         }
     	
     	return response()->json(['return'=>$stat]);
